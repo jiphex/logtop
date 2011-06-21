@@ -16,6 +16,8 @@ DEFINE = _GNU_SOURCE
 LIB = -lncurses #-lefence
 CFLAGS = -O3 -W -Wall -ansi -pedantic -I$(INCLUDE)
 RM = rm -f
+MANUAL = $(NAME).1
+MANDIR = $(DESTDIR)/usr/share/man/man1
 
 $(NAME):	$(OBJ)
 		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)
@@ -23,6 +25,7 @@ $(NAME):	$(OBJ)
 install:	$(NAME)
 		mkdir -p $(DESTDIR)/usr/bin/
 		cp $(NAME) $(DESTDIR)/usr/bin/
+		cp doc/$(MANUAL) $(MANDIR)/$(MANUAL)
 
 all:
 		@make $(NAME)
